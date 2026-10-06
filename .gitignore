@@ -1,0 +1,15 @@
+/target
+.env
+.resume-info.json
+.guild_config.csv
+*.log
+data/
+*.bin
+*.wal
+*.tombstone
+*.bak
+*.orig
+*~
+.idea/
+.vscode/
+.DS_Store

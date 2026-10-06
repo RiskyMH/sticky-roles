@@ -1,0 +1,21 @@
+services:
+  sticky-roles:
+    image: ghcr.io/riskymh/sticky-roles:latest
+    build: .
+    restart: unless-stopped
+    init: true
+    environment:
+      DATA_DIR: ${DATA_DIR:-/data}
+      DISCORD_TOKEN: ${DISCORD_TOKEN:?REQUIRED}
+      FORCE_COLOR: 1
+    volumes:
+      - sticky-roles-data:/data
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 64M
+
+volumes:
+  sticky-roles-data:

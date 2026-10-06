@@ -1,0 +1,54 @@
+[package]
+name = "sticky-roles"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+
+[lints.clippy]
+correctness = "deny"
+suspicious = "warn"
+style = "warn"
+complexity = "warn"
+perf = "warn"
+
+[dependencies]
+anyhow = "1"
+thiserror = "2"
+mimalloc = { version = "0.1", default-features = false, optional = true }
+crc32fast = "1"
+dashmap = "6"
+http = { version = "=1.4.2", default-features = false }
+http-body-util = { version = "=0.1.4", default-features = false }
+hyper = { version = "=1.10.1", default-features = false }
+hyper-rustls = { version = "=0.27.9", default-features = false, features = ["http1", "http2", "rustls-platform-verifier"] }
+hyper-util = { version = "=0.1.20", default-features = false, features = ["client-legacy", "http1", "http2", "tokio"] }
+rustc-hash = "2"
+rustls = { version = "0.23", features = ["aws-lc-rs"] }
+serde = { version = "1", features = ["derive"] }
+csv = "1"
+postcard = { version = "1", features = ["use-std"] }
+tokio = { version = "1", features = ["fs", "io-util", "macros", "rt", "signal", "rt-multi-thread", "time"] }
+tokio-util = { version = "0.7", features = ["rt"] }
+tracing = "0.1"
+tracing-subscriber = "0.3"
+twilight-gateway = "0.17"
+twilight-http = "0.17"
+twilight-model = "0.17"
+twilight-util = { version = "0.17", features = ["builder"] }
+
+# canary twilight for resolved channel app_permissions in interactions
+[patch.crates-io]
+twilight-gateway = { git = "https://github.com/twilight-rs/twilight" }
+twilight-http = { git = "https://github.com/twilight-rs/twilight" }
+twilight-model = { git = "https://github.com/twilight-rs/twilight" }
+twilight-util = { git = "https://github.com/twilight-rs/twilight" }
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[features]
+use-mimalloc = ["mimalloc"]

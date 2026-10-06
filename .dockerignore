@@ -1,0 +1,9 @@
+/target
+.env
+.resume-info.json
+.guild_config.csv
+.git
+.github
+Dockerfile
+docker-compose.yml
+README.md
