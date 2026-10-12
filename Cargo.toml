@@ -35,6 +35,7 @@ twilight-gateway = "0.17"
 twilight-http = "0.17"
 twilight-model = "0.17"
 twilight-util = { version = "0.17", features = ["builder"] }
+time = { version = "0.3" }
 
 # canary twilight for resolved channel app_permissions in interactions
 [patch.crates-io]
