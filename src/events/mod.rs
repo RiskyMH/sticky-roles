@@ -40,6 +40,12 @@ pub async fn event_handler(event: Event, _state: ()) {
             commands::handle_interaction(interaction.0).await;
         }
         Event::Ready(ready) => {
+            tracing::info!(
+                "[shard {}] {}#{} is ready",
+                ready.shard.map(|s| s.number()).unwrap_or(0),
+                ready.user.name,
+                ready.user.discriminator
+            );
             BOT_ID.store(ready.user.id.get(), Ordering::Release);
         }
         Event::GuildCreate(payload) => match &*payload {

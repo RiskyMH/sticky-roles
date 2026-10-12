@@ -340,10 +340,6 @@ async fn apply_restore(
         return RESTORE_NEEDS_MANAGE_MSG.to_owned();
     }
     if restore_denied(&active, &positions, &gate) {
-        tracing::warn!(
-            reason = "restore-hierarchy-deny",
-            "restore position rejected; old data kept"
-        );
         return "Couldn't restore that backup — it contains roles above your top role, so you can't restore it."
             .to_owned();
     }

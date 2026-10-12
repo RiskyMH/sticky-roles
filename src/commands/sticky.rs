@@ -190,7 +190,7 @@ fn modal_components(
     vec![
         Component::Label(
             LabelBuilder::new("Tracked roles", Component::SelectMenu(roles_menu))
-                .description("Roles to restore to members upon rejoin")
+                .description("Roles to restore to members upon rejoin (if they previously had them)")
                 .build(),
         ),
         Component::Label(

@@ -195,7 +195,6 @@ pub(crate) async fn on_member_remove(payload: &MemberRemove) {
     };
 
     let Some((roles, nick)) = saved else {
-        tracing::warn!("member leave with no cached member; save skipped");
         cache()
             .write()
             .await
